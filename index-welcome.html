@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Welcome</title>
+  </head>
+
+  <body>
+    <header>
+      <img class="logo" src="assets/epicode_logo.png" alt="Logo" />
+    </header>
+    <div>
+      <h1>
+        <span style="font-weight: 200"> Welcome to </span> <br />
+        your exam
+      </h1>
+      <div class="instructions">
+      <h2>Instructions</h2>
+      <p>
+        We don't expect most engineers to know the answer to all of these <br />
+        questions, so don't worry if you're unsure of a few of them.
+      </p>
+    </div>
+      <ul class="ul-tips">
+        <li>
+          Each question is <b> timed </b>and can only be <b> answered once. </b>
+        </li>
+        <li>
+          Changing browser tab or opening other windows will
+          <b> invalidate the question. </b>
+        </li>
+        <li>This exam will take approx. <b> 0.5 minutes. </b></li>
+      </ul>
+    </div>
+    <form id="proceed-form"  action="index-questions.html">
+      <div id="proceedTest">
+        <input class="checked" type="checkbox" name="checkbox" required />
+        <label for="checkbox">
+          I promise to answer myself without help from anyone.
+        </label>
+      </div>
+      <button type="submit" form="proceed-form" value="PROCEED" id="proceed-button">PROCEED</button>
+    </form>
+  </body>
+  <script src="script.js"></script>
+</html>

@@ -1,0 +1,96 @@
+html {
+  height: 100%;
+  background-image: url("assets/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  padding-top: 3rem;
+  padding-left: 5rem;
+}
+
+h1 {
+  color: white;
+  font-family: "Outfit", sans-serif;
+  font-size: 5rem;
+}
+
+h2 {
+  font-family: "Outfit", sans-serif;
+  color: #d20094;
+  font-size: 2.5rem;
+  margin-bottom: 0%;
+}
+
+p,
+li,
+label {
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+
+.instructions {
+    margin-bottom: 3em;
+}
+
+ul {
+    line-height: 2em;
+}
+
+button {
+  border: 1px solid #00ffff;
+  border-radius: 0.3em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.85em 1.65em;
+  background-color: #00ffff;
+  text-decoration: none;
+  box-shadow: 0px 2px 24px 2px rgba(3, 140, 220, 0.1);
+  transition: box-shadow 0.3s;
+  color: #000000;
+}
+
+button:hover {
+  box-shadow: 0px 2px 24px 2px #00ffff;
+}
+
+input[type="checkbox"] {
+  accent-color: #00ffff;
+  transition: 0.3s;
+}
+
+input[type="checkbox"]:focus {
+  box-shadow: 0px 2px 24px 2px #00ffff;
+}
+
+input[type="radio"] {
+  accent-color: #00ffff;
+  transition: 0.3s;
+}
+
+.logo {
+  width: 10rem;
+}
+
+#proceed-form {
+    margin-top: 70px;
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#proceed-form button{
+    font-size: 1.5em;
+}
+
+.instructions p, .ul-tips li{
+    font-weight: 200;
+}
+
+b {
+ font-weight: 800;
+}
