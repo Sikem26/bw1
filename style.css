@@ -94,3 +94,38 @@ input[type="radio"] {
 b {
  font-weight: 800;
 }
+
+#timer {
+  float: right;
+  margin-right: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#circle {
+  fill: transparent;
+  stroke-width: 15px;
+  stroke-dasharray: 450;
+  stroke: #00ffff;
+  position: relative;
+  transform: translate(30px, 30px);
+}
+
+svg {
+  width: 200px;
+  height: 300px;
+}
+
+p{
+  position: absolute;
+  top: 55px;
+  font-size: 0.5em;
+  text-align: center;
+}
+
+.seconds {
+  font-size: 5em;
+}
+
