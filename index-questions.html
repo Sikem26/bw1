@@ -28,31 +28,31 @@
         <svg>
           <circle id="circle" cy="70px" cx="70px" r="70px"></circle>
         </svg>
-        <p>REMAINING <br> <span class="seconds">00</span> <br> SECONDS</p>
+        <p>
+          REMAINING <br />
+          <span class="seconds">00</span> <br />
+          SECONDS
+        </p>
       </div>
     </div>
     <div>
-      <h1 class="questionText">
-        <span style="font-weight: 200">Question </span><br />
-        text test
-      </h1>
+      <div class="questionText">
+        <h1 id="variabileDomanda"></h1>
+      </div>
+    </div>
+    <div class="questionContainer">
+      <form id="questionList" action="submit">
+        <button id="answerOne" type="radio" name="answerOne">Uno</button>
+        <button id="answerTwo" type="radio" name="answerTwo">Due</button>
+        <button id="answerThree" type="radio" name="answerThree">Tre</button>
+        <button id="answerFour" type="radio" name="answerFour">Quattro</button>
+      </form>
     </div>
     <div>
-      <p>
-        <span> </span>
-      </p>
-    </div>
-    <form action="submit">
-      <button id="answerOne" type="radio" name="answerOne">Uno</button>
-      <button id="answerTwo" type="radio" name="answerTwo">Due</button>
-      <button id="answerThree" type="radio" name="answerThree">Tre</button>
-      <button id="answerFour" type="radio" name="answerFour">Quattro</button>
-    </form>
-    <div>
-      <p>
-        Question
-        <span class="questionNumber"> 1 </span>
-        /10
+      <p class="counterQuestion">
+        QUESTION &nbsp
+        <span class="questionNumber"> 1 &nbsp </span>
+        <span style="color: #d20094"> / 10 </span>
       </p>
     </div>
   </body>

@@ -32,14 +32,14 @@ label {
 }
 
 .instructions {
-    margin-bottom: 3em;
+  margin-bottom: 3em;
 }
 
 ul {
-    line-height: 2em;
+  line-height: 2em;
 }
 
-button {
+#proceed-button {
   border: 1px solid #00ffff;
   border-radius: 0.3em;
   font-size: 0.9rem;
@@ -76,32 +76,34 @@ input[type="radio"] {
 }
 
 #proceed-form {
-    margin-top: 70px;
-    width: 35%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin-top: 70px;
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#proceed-form button{
-    font-size: 1.5em;
+#proceed-form button {
+  font-size: 1.5em;
 }
 
-.instructions p, .ul-tips li{
-    font-weight: 200;
+.instructions p,
+.ul-tips li {
+  font-weight: 200;
 }
 
 b {
- font-weight: 800;
+  font-weight: 800;
 }
 
 #timer {
   float: right;
-  margin-right: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
+  right: 12em;
+  top: 2em;
 }
 
 #circle {
@@ -129,3 +131,59 @@ svg {
   font-size: 5em;
 }
 
+#answerOne,
+#answerTwo,
+#answerThree,
+#answerFour {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 15rem;
+  width: 330px;
+  height: 70px;
+  border: 3px solid white;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  transition: background-color 0.6s;
+}
+
+#answerOne:hover,
+#answerTwo:hover,
+#answerThree:hover,
+#answerFour:hover {
+  border: double 3px transparent;
+  background-image: linear-gradient(#d20094, #900080),
+    linear-gradient(to bottom right, white, #d20094);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  /*box-shadow: 0px 2px 24px 2px #900080;*/
+  /*border: 2px #d20094;*/
+}
+
+.questionContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#questionList {
+  width: 35%;
+  height: 12rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: center;
+  align-content: space-around;
+}
+
+.questionText {
+  display: flex;
+  justify-content: center;
+}
+
+.counterQuestion {
+  margin-top: 12rem;
+  display: flex;
+  justify-content: center;
+}
