@@ -94,29 +94,39 @@ const questions = [
   },
 ];
 
+// document.addEventListener("DOMContentLoaded", function() {
+//   timerSeconds();
+// });
+timerSeconds();
+
 function timerSeconds() {
   let set = 30;
   const seconds = document.querySelector("#circle");
 
+  // Funzione per aggiornare il display e lo strokeDashoffset
+  const updateDisplay = () => {
+    // Aggiorna lo stokeDashoffset basato sui secondi rimanenti
+    const offset = 450 - (set / 30) * 450
+    seconds.style.strokeDashoffset = offset;
+
+    // Aggiorna il resto dei secondi, mantenendo il formato "00"
+    let lastSec = set < 10 ? "0" + set : set;
+    document.querySelector(".seconds").innerHTML = lastSec;
+  };
+
+  updateDisplay();
+
+  // Imposta la transizione per lo strokeDashoffset
+  seconds.style.transition = "stroke-dashoffset 0.9s linear";
+
   const intervalId = setInterval(() => {
+    set--;
+
     if (set < 0) {
       clearInterval(intervalId); // Ferma il timer quando raggiunge 0
       return;
     }
 
-    // Aggiorna lo strokeDashoffset basato sui secondi rimanenti
-    seconds.style.strokeDashoffset = 450 - (set / 30) * 450;
-
-    // Aggiorna il testo dei secondi, mantenendo il formato "00"
-    let lastSec = set < 10 ? "0" + set : set;
-    document.querySelector(".seconds").innerHTML = lastSec;
-
-    set--; // Decrementa il valore di `set` dopo aver aggiornato il display
+    updateDisplay(); // Aggiorna il display e lo strokeDashoffset
   }, 1000); // Imposta l'intervallo a 1 secondo
-
-  // Imposta la transizione per lo strokeDashoffset
-  seconds.style.transition = "stroke-dashoffset 1s linear";
 }
-
-timerSeconds();
-
