@@ -94,11 +94,108 @@ const questions = [
   },
 ];
 
-// document.addEventListener("DOMContentLoaded", function() {
-//   timerSeconds();
-// });
-timerSeconds();
+// Dichiarare le variabili come gli elementi che mi servono
+let button = document.getElementsByTagName("button");
+let variableQuestion = document.getElementById("quiz-question");
+let questBtn = document.querySelectorAll(".selectBtn");
 
+let indexQuestion = 0;
+let indexAnswer = 0;
+let indexCounter = 1;
+let punteggio = 0;
+
+function question(index) {
+  // FUNZIONE per la generazione della domanda secondo l'indice domande
+  variableQuestion.innerHTML = `${questions[index].question}`;
+}
+
+function answer(index) {
+  //FUNZIONE per la generazione delle risposte randomizzando la prima di posizione e piazzando le rimanenti sui i blocchi liberi
+  let randomCorrect = numeroCasuale();
+
+  //GENERO UN NUMERO CAUSALE PER POSIZIONARE LA RISPOSTA ESATTA (AD OGNI REFRESH AVRA' POSIZIONE DIVERSA)
+  button[randomCorrect].innerHTML = questions[index].correct_answer;
+
+  switch (randomCorrect) {
+    case 0: {
+      button[1].innerHTML = questions[index].incorrect_answers[0];
+      button[2].innerHTML = questions[index].incorrect_answers[1];
+      button[3].innerHTML = questions[index].incorrect_answers[2];
+      break;
+    }
+    case 1: {
+      button[0].innerHTML = questions[index].incorrect_answers[0];
+      button[2].innerHTML = questions[index].incorrect_answers[1];
+      button[3].innerHTML = questions[index].incorrect_answers[2];
+      break;
+    }
+    case 2: {
+      button[0].innerHTML = questions[index].incorrect_answers[0];
+      button[1].innerHTML = questions[index].incorrect_answers[1];
+      button[3].innerHTML = questions[index].incorrect_answers[2];
+      break;
+    }
+    case 3: {
+      button[0].innerHTML = questions[index].incorrect_answers[0];
+      button[1].innerHTML = questions[index].incorrect_answers[1];
+      button[2].innerHTML = questions[index].incorrect_answers[2];
+      break;
+    }
+  }
+  return (CorrectAnswer = randomCorrect);
+}
+
+question(0);
+answer(0);
+
+// function invioRisposta(risposta) {
+//   let check = risposta;
+//   let corretto;
+//   if (check == button[0].value) {
+//     corretto = button[0].value;
+//   }
+// }
+
+function numeroCasuale() {
+  // FUNZIONE GENERA NUMERO CASUALE
+  let num = Math.round(Math.random() * 3);
+  return num;
+}
+
+for (let i = 0; i < questBtn.length; i++) {
+  questBtn[i].addEventListener("click", function () {
+    event.preventDefault();
+    timerSeconds();
+
+    // Incrementa le domande
+    indexQuestion++;
+    question(indexQuestion);
+
+    // Incrementa le risposte
+    indexAnswer++;
+    answer(indexAnswer);
+
+    // Incrementa il counter
+    // let questNumber = document.querySelector(".questionNumber").innerHTML;
+    // questNumber = 
+    // convertStr = indexCounter;
+    // indexCounter++;
+    // console.log(convertStr);
+    // return indexCounter;
+    indexCounter++
+    incrementNum(indexCounter)
+  });
+}
+
+function incrementNum(num) {
+  let questNumber = document.querySelector(".questionNumber").innerHTML;
+  questNumber = num;
+  console.log(questNumber);
+  return questNumber
+}
+incrementNum(0)
+
+// Funzione per il timer 
 function timerSeconds() {
   let set = 30;
   const seconds = document.querySelector("#circle");
@@ -131,74 +228,4 @@ function timerSeconds() {
   }, 1000); // Imposta l'intervallo a 1 secondo
 }
 
-// Dichiarare le variabili che ci servono
-let button = document.getElementsByTagName("button");
-let variableQuestion = document.getElementById("variabileDomanda");
-
-// SIMONE GRECO
-let indexQuestion = 0;
-let punteggio = 0;
-
-function Question(index) {
-  /*
-      FUNZIONE per la generazione della domanda secondo l'indice domande
-      */
-  let scritta = (variableQuestion.innerHTML = questions[index].question);
-  document.getElementById("variabileDomanda").innerHTML = scritta;
-}
-
-function Answer(index) {
-  /*
-      FUNZIONE per la generazione delle risposte randomizzando la prima di posizione e piazzando le rimanenti sui i blocchi liberi
-      */
-  let RandomCorrect = NumeroCasuale(); //GENERO UN NUMERO CAUSALE PER POSIZIONARE LA RISPOSTA ESATTA (AD OGNI REFRESH AVRA' POSIZIONE DIVERSA)
-  button[RandomCorrect].innerHTML = questions[index].correct_answer;
-
-  switch (RandomCorrect) {
-    case 0: {
-      button[1].innerHTML = questions[index].incorrect_answers[0];
-      button[2].innerHTML = questions[index].incorrect_answers[1];
-      button[3].innerHTML = questions[index].incorrect_answers[2];
-      break;
-    }
-    case 1: {
-      button[0].innerHTML = questions[index].incorrect_answers[0];
-      button[2].innerHTML = questions[index].incorrect_answers[1];
-      button[3].innerHTML = questions[index].incorrect_answers[2];
-      break;
-    }
-    case 2: {
-      button[0].innerHTML = questions[index].incorrect_answers[0];
-      button[1].innerHTML = questions[index].incorrect_answers[1];
-      button[3].innerHTML = questions[index].incorrect_answers[2];
-      break;
-    }
-    case 3: {
-      button[0].innerHTML = questions[index].incorrect_answers[0];
-      button[1].innerHTML = questions[index].incorrect_answers[1];
-      button[2].innerHTML = questions[index].incorrect_answers[2];
-      break;
-    }
-  }
-  return (CorrectAnswer = RandomCorrect);
-}
-
-Question(0);
-InvioRisposta(Answer(0));
-
-function InvioRisposta(risposta) {
-  let check = risposta;
-  let corretto;
-  if (check == button[0].value) {
-    corretto = button[0].value;
-  }
-}
-
-function NumeroCasuale() {
-  /*
-        FUNZIONE GENERA NUMERO CASUALE
-      */
-  let num = Math.round(Math.random() * 3);
-  return num;
-}
-
+// timerSeconds();
