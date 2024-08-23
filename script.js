@@ -144,7 +144,6 @@ function answer(index) {
       break;
     }
   }
-  return (CorrectAnswer = randomCorrect);
 }
 
 question(0);
@@ -225,5 +224,3 @@ function timerSeconds() {
 }
 
 timerSeconds();
-
-

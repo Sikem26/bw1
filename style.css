@@ -154,8 +154,6 @@ svg {
     linear-gradient(to bottom right, white, #d20094);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  /*box-shadow: 0px 2px 24px 2px #900080;*/
-  /*border: 2px #d20094;*/
 }
 
 .questionContainer {
