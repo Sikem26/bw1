@@ -1,14 +1,11 @@
-html {
-  height: 100%;
-  background-image: url("assets/bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 body {
   padding-top: 3rem;
   padding-left: 5rem;
+  background-image: url("assets/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
@@ -180,10 +177,20 @@ svg {
 .questionText {
   display: flex;
   justify-content: center;
+  margin-bottom: 6em;
 }
 
 .counterQuestion {
   margin-top: 12rem;
   display: flex;
   justify-content: center;
+}
+
+#quiz-question {
+  width: 60%;;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }

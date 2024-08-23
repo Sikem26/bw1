@@ -103,6 +103,8 @@ let indexQuestion = 0;
 let indexAnswer = 0;
 let indexCounter = 1;
 let punteggio = 0;
+let timer = 0;
+let intervalId;
 
 function question(index) {
   // FUNZIONE per la generazione della domanda secondo l'indice domande
@@ -111,7 +113,7 @@ function question(index) {
 
 function answer(index) {
   //FUNZIONE per la generazione delle risposte randomizzando la prima di posizione e piazzando le rimanenti sui i blocchi liberi
-  let randomCorrect = numeroCasuale();
+  let randomCorrect = randomAnswer();
 
   //GENERO UN NUMERO CAUSALE PER POSIZIONARE LA RISPOSTA ESATTA (AD OGNI REFRESH AVRA' POSIZIONE DIVERSA)
   button[randomCorrect].innerHTML = questions[index].correct_answer;
@@ -156,7 +158,7 @@ answer(0);
 //   }
 // }
 
-function numeroCasuale() {
+function randomAnswer() {
   // FUNZIONE GENERA NUMERO CASUALE
   let num = Math.round(Math.random() * 3);
   return num;
@@ -176,33 +178,27 @@ for (let i = 0; i < questBtn.length; i++) {
     answer(indexAnswer);
 
     // Incrementa il counter
-    // let questNumber = document.querySelector(".questionNumber").innerHTML;
-    // questNumber = 
-    // convertStr = indexCounter;
-    // indexCounter++;
-    // console.log(convertStr);
-    // return indexCounter;
-    indexCounter++
-    incrementNum(indexCounter)
+    indexCounter++;
+    document.querySelector(".questionNumber").innerHTML = indexCounter;
+    console.log(timerSeconds());
+
+    // 
   });
 }
 
-function incrementNum(num) {
-  let questNumber = document.querySelector(".questionNumber").innerHTML;
-  questNumber = num;
-  console.log(questNumber);
-  return questNumber
-}
-incrementNum(0)
+// // Funzione per il timer
 
-// Funzione per il timer 
 function timerSeconds() {
   let set = 30;
   const seconds = document.querySelector("#circle");
 
+  if (intervalId) {
+    clearInterval(intervalId); // Ferma il timer precedente
+  }
+
   // Funzione per aggiornare il display e lo strokeDashoffset
   const updateDisplay = () => {
-    // Aggiorna lo stokeDashoffset basato sui secondi rimanenti
+    // Aggiorna lo strokeDashoffset basato sui secondi rimanenti
     const offset = 450 - (set / 30) * 450;
     seconds.style.strokeDashoffset = offset;
 
@@ -216,7 +212,7 @@ function timerSeconds() {
   // Imposta la transizione per lo strokeDashoffset
   seconds.style.transition = "stroke-dashoffset 0.9s linear";
 
-  const intervalId = setInterval(() => {
+  intervalId = setInterval(() => {
     set--;
 
     if (set < 0) {
@@ -228,4 +224,6 @@ function timerSeconds() {
   }, 1000); // Imposta l'intervallo a 1 secondo
 }
 
-// timerSeconds();
+timerSeconds();
+
+
