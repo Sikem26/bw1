@@ -20,8 +20,18 @@
     <header><img class="logo" src="assets/epicode_logo.png" alt="Logo"></header>
     <div>
         <h1>Results</h1>
-        <h2>Your result is <span></span></h2>
+        <h2>Your result is: <span id="finalResult"></span></h2>
     </div>
-    <script src="script.js"></script>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let finalResult = document.getElementById("finalResult");
+      let result = localStorage.getItem("punteggioFinale");
+      if (finalResult && result !== null) {
+        finalResult.innerHTML = ` ${result}`;
+      } else {
+        finalResult.innerHTML = "Nessun punteggio trovato.";
+      }
+    });
+</script>
 </html>

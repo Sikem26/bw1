@@ -99,16 +99,23 @@ let button = document.getElementsByTagName("button");
 let variableQuestion = document.getElementById("quiz-question");
 let questBtn = document.querySelectorAll(".selectBtn");
 
+let indexVerifica = 0
 let indexQuestion = 0;
 let indexAnswer = 0;
 let indexCounter = 1;
 let punteggio = 0;
 let timer = 0;
 let intervalId;
+let elencoRisposte = []
+
 
 function question(index) {
   // FUNZIONE per la generazione della domanda secondo l'indice domande
+  if(variableQuestion !== null){
   variableQuestion.innerHTML = `${questions[index].question}`;
+  }else{
+    console.log("no element in the page")
+  }
 }
 
 function answer(index) {
@@ -116,35 +123,19 @@ function answer(index) {
   let randomCorrect = randomAnswer();
 
   //GENERO UN NUMERO CAUSALE PER POSIZIONARE LA RISPOSTA ESATTA (AD OGNI REFRESH AVRA' POSIZIONE DIVERSA)
-  button[randomCorrect].innerHTML = questions[index].correct_answer;
+  if (button[randomCorrect]) {
+    button[randomCorrect].innerHTML = questions[index].correct_answer;
+  }
 
-  switch (randomCorrect) {
-    case 0: {
-      button[1].innerHTML = questions[index].incorrect_answers[0];
-      button[2].innerHTML = questions[index].incorrect_answers[1];
-      button[3].innerHTML = questions[index].incorrect_answers[2];
-      break;
-    }
-    case 1: {
-      button[0].innerHTML = questions[index].incorrect_answers[0];
-      button[2].innerHTML = questions[index].incorrect_answers[1];
-      button[3].innerHTML = questions[index].incorrect_answers[2];
-      break;
-    }
-    case 2: {
-      button[0].innerHTML = questions[index].incorrect_answers[0];
-      button[1].innerHTML = questions[index].incorrect_answers[1];
-      button[3].innerHTML = questions[index].incorrect_answers[2];
-      break;
-    }
-    case 3: {
-      button[0].innerHTML = questions[index].incorrect_answers[0];
-      button[1].innerHTML = questions[index].incorrect_answers[1];
-      button[2].innerHTML = questions[index].incorrect_answers[2];
-      break;
+  let remainingButtons = [0, 1, 2, 3].filter(i => i !== randomCorrect);
+
+  for (let i = 0; i < remainingButtons.length; i++) {
+    if (button[remainingButtons[i]]) {
+      button[remainingButtons[i]].innerHTML = questions[index].incorrect_answers[i];
     }
   }
 }
+
 
 question(0);
 answer(0);
@@ -185,7 +176,7 @@ for (let i = 0; i < questBtn.length; i++) {
   });
 }
 
-// // Funzione per il timer
+// Timer function
 
 function timerSeconds() {
   let set = 30;
@@ -199,11 +190,23 @@ function timerSeconds() {
   const updateDisplay = () => {
     // Aggiorna lo strokeDashoffset basato sui secondi rimanenti
     const offset = 450 - (set / 30) * 450;
+    var seconds = document.querySelector('#seconds');
+
+// Verifica se l'elemento esiste
+if (seconds) {
+    // Se l'elemento esiste, esegui il codice
     seconds.style.strokeDashoffset = offset;
+} else {
+    // L'elemento non esiste, puoi gestire la situazione qui se necessario
+    console.log("L'elemento non esiste nella pagina");
+}
+
 
     // Aggiorna il resto dei secondi, mantenendo il formato "00"
     let lastSec = set < 10 ? "0" + set : set;
-    document.querySelector(".seconds").innerHTML = lastSec;
+    const secondsElement = document.querySelector(".seconds");
+if (secondsElement) {
+    secondsElement.innerHTML = lastSec;
   };
 
   updateDisplay();
@@ -223,4 +226,47 @@ function timerSeconds() {
   }, 1000); // Imposta l'intervallo a 1 secondo
 }
 
-timerSeconds();
+//timerSeconds();
+
+// Reindirizza a pagina risultati
+
+function resultPage(){
+  if(indexQuestion >= questions.length)
+    window.location.href = "index-results.html";
+  pushNumber()
+}
+
+document.getElementById("answerOne").addEventListener("click", resultPage);
+document.getElementById("answerTwo").addEventListener("click", resultPage);
+document.getElementById("answerThree").addEventListener("click", resultPage);
+document.getElementById("answerFour").addEventListener("click", resultPage);
+
+//Calcola risultato
+let punteggioFinale = 0
+
+function verifica (indexVerifica) {
+  console.log (elencoRisposte[indexVerifica])
+  console.log (questions[indexVerifica].correct_answer)
+  if (elencoRisposte[indexVerifica] === questions[indexVerifica].correct_answer) {
+    punteggioFinale++ 
+  } else {
+    punteggioFinale
+  }
+  return punteggioFinale
+}
+
+let answerResult = verifica(0)
+console.log(answerResult)
+//Risultato a schermo
+
+let finalResult = document.getElementById("finalResult");
+let result = answerResult
+
+function pushNumber(){
+  if (finalResult) {
+    finalResult.innerHTML = result;
+    }else{
+    console.log("elemento non esiste")
+    }
+}
+}
